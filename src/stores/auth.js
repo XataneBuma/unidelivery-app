@@ -66,13 +66,18 @@ export const useAuthStore = defineStore('auth', () => {
   async function register(userData) {
     try {
       await new Promise(resolve => setTimeout(resolve, 800))
-      
       const newUser = {
         id: Math.max(...mockUsers.map(u => u.id)) + 1,
-        ...userData,
+        name: userData.name,
+        email: userData.email,
+        role: userData.role,
+        studentId: userData.studentId,
+        faculty: userData.faculty,
+        department: userData.department,
+        course: userData.course,
+        diet: userData.diet,
         avatar: `https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70)}`
       }
-      
       mockUsers.push(newUser)
       return newUser
     } catch (error) {

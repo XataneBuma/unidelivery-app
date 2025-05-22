@@ -1,3 +1,30 @@
+// Mocked suppliers for admin management
+const adminMockSuppliers = [
+  { id: 1, name: 'Lanchonete do Campus', email: 'lanchonete@univ.edu', approved: true, blocked: false },
+  { id: 2, name: 'Pizzaria Universitária', email: 'pizza@univ.edu', approved: false, blocked: false },
+  { id: 3, name: 'Doceria da Facul', email: 'doceria@univ.edu', approved: true, blocked: true },
+]
+
+const getSuppliersAdmin = async (search = '') => {
+  await new Promise(resolve => setTimeout(resolve, 300))
+  if (!search) return { data: adminMockSuppliers }
+  return { data: adminMockSuppliers.filter(s => s.name.toLowerCase().includes(search.toLowerCase()) || s.email.toLowerCase().includes(search.toLowerCase())) }
+}
+
+const updateSupplier = async (id, supplierData) => {
+  await new Promise(resolve => setTimeout(resolve, 300))
+  return { data: { ...supplierData, id } }
+}
+
+const approveSupplier = async (id) => {
+  await new Promise(resolve => setTimeout(resolve, 300))
+  return { success: true }
+}
+
+const blockSupplier = async (id, blocked) => {
+  await new Promise(resolve => setTimeout(resolve, 300))
+  return { success: true, blocked }
+}
 import axios from 'axios'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
@@ -294,6 +321,10 @@ export default {
     await new Promise(resolve => setTimeout(resolve, 500))
     return { data: mockSuppliers }
   },
+  getSuppliersAdmin,
+  updateSupplier,
+  approveSupplier,
+  blockSupplier,
   
 
   async getSupplier(id) {

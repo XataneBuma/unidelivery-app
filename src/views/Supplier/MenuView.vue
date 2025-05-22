@@ -66,6 +66,18 @@
               </select>
             </div>
             <div class="form-group">
+              <label>Etiquetas Alimentares</label>
+              <select v-model="form.dietLabels" multiple>
+                <option value="vegan">Vegano</option>
+                <option value="vegetarian">Vegetariano</option>
+                <option value="gluten-free">Sem Glúten</option>
+                <option value="lactose-free">Sem Lactose</option>
+                <option value="quick">Refeição Rápida</option>
+                <option value="healthy">Saudável</option>
+              </select>
+              <small class="form-hint">Selecione todas que se aplicam</small>
+            </div>
+            <div class="form-group">
               <label>Imagem (URL)</label>
               <input v-model="form.image" type="text" placeholder="Cole a URL da imagem">
             </div>

@@ -33,6 +33,18 @@
               <label>Telefone</label>
               <input v-model="form.phone" type="tel" required>
             </div>
+            <div class="form-group">
+              <label>Especialidades</label>
+              <select v-model="form.specialties" multiple>
+                <option value="vegan">Vegano</option>
+                <option value="vegetarian">Vegetariano</option>
+                <option value="gluten-free">Sem Glúten</option>
+                <option value="lactose-free">Sem Lactose</option>
+                <option value="quick">Refeição Rápida</option>
+                <option value="healthy">Saudável</option>
+              </select>
+              <small class="form-hint">Selecione todas que se aplicam</small>
+            </div>
           </div>
           
           <div class="form-section">
@@ -45,7 +57,7 @@
           </div>
           
           <div class="form-section">
-            <h3>Áreas de Entrega</h3>
+            <h3>Áreas de Entrega no Campus</h3>
             <div class="delivery-areas">
               <div v-for="area in deliveryAreas" :key="area.id" class="delivery-area">
                 <label class="area-toggle">
@@ -59,6 +71,7 @@
                 </label>
               </div>
             </div>
+            <small class="form-hint">Selecione os prédios/setores do campus onde realiza entregas</small>
           </div>
           
           <div class="form-actions">

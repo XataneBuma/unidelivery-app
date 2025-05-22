@@ -1,8 +1,50 @@
+// Mocked orders for admin management
+const mockOrders = [
+  {
+    id: 1001,
+    user: 'Alice',
+    supplier: 'Lanchonete do Campus',
+    status: 'Entregue',
+    total: 40.70,
+    createdAt: '2023-05-15',
+    deliveryPoint: 'Bloco A - Entrada Principal',
+    items: [
+      { id: 101, name: 'X-Burger', price: 12.90, quantity: 2 },
+      { id: 102, name: 'X-Salada', price: 14.90, quantity: 1 }
+    ]
+  },
+  {
+    id: 1002,
+    user: 'Bob',
+    supplier: 'Pizzaria Universitária',
+    status: 'Pendente',
+    total: 29.90,
+    createdAt: '2023-05-16',
+    deliveryPoint: 'Biblioteca Central',
+    items: [
+      { id: 201, name: 'Pizza Margherita', price: 29.90, quantity: 1 }
+    ]
+  }
+]
+
+const getOrdersAdmin = async (filter = '') => {
+  await new Promise(resolve => setTimeout(resolve, 300))
+  if (!filter) return { data: mockOrders }
+  return { data: mockOrders.filter(o => o.status.toLowerCase().includes(filter.toLowerCase()) || o.user.toLowerCase().includes(filter.toLowerCase()) || o.supplier.toLowerCase().includes(filter.toLowerCase())) }
+}
+
+const getOrderDetails = async (orderId) => {
+  await new Promise(resolve => setTimeout(resolve, 300))
+  return { data: mockOrders.find(o => o.id === Number(orderId)) }
+}
 import axios from 'axios'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
 
 export default {
+
+  getOrdersAdmin,
+  getOrderDetails,
 
   
   async create(orderData) {

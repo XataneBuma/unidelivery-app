@@ -107,6 +107,16 @@ export const useSupplierStore = defineStore('supplier', () => {
   }
   
   // Novos métodos necessários para o dashboard
+
+  // Adiciona um novo item ao menu e atualiza a lista
+  async function addMenuItem(itemData) {
+    try {
+      await SupplierService.addMenuItem(itemData)
+      await fetchMenuItems()
+    } catch (err) {
+      console.error('Error adding menu item:', err)
+    }
+  }
   async function fetchMenuItems() {
     try {
       const response = await SupplierService.getMenuItems()
@@ -192,6 +202,7 @@ export const useSupplierStore = defineStore('supplier', () => {
     fetchSupplierProfile,
     // Novos métodos
     updateOrderStatus,
-    markNotificationAsRead
+    markNotificationAsRead,
+    addMenuItem
   }
 })

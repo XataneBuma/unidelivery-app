@@ -1,14 +1,52 @@
 <template>
+
   <div class="supplier-dashboard">
     <div class="dashboard-header">
       <h1>Painel do Fornecedor</h1>
-      <div class="header-actions">
-        <router-link to="/supplier/profile" class="btn-profile">
-          <font-awesome-icon icon="user" />
-          Meu Perfil
-        </router-link>
-      </div>
     </div>
+
+    <nav class="supplier-nav">
+      <router-link to="/supplier/dashboard" class="nav-link" exact-active-class="active">
+        <font-awesome-icon icon="tachometer-alt" /> Dashboard
+      </router-link>
+      <router-link to="/supplier/menu" class="nav-link" exact-active-class="active">
+        <font-awesome-icon icon="utensils" /> Menu
+      </router-link>
+      <router-link to="/supplier/orders" class="nav-link" exact-active-class="active">
+        <font-awesome-icon icon="list" /> Pedidos
+      </router-link>
+      <router-link to="/supplier/profile" class="nav-link" exact-active-class="active">
+        <font-awesome-icon icon="user" /> Perfil
+      </router-link>
+      <router-link to="/supplier/tickets" class="nav-link" exact-active-class="active">
+        <font-awesome-icon icon="life-ring" /> Suporte
+      </router-link>
+    </nav>
+/* Navigation styles */
+.supplier-nav {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-link.active, .nav-link.router-link-exact-active {
+  background: #42b983;
+  color: #fff;
+}
+.nav-link:hover {
+  background: #e0f7ef;
+  color: #21916b;
+}
 
     <div class="dashboard-grid">
       <div class="stats-card">
